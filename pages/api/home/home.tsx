@@ -99,23 +99,28 @@ const Home = ({
 	user:''
   };
   
-  const { data:roleData, error:errorObj, refetch:refetchObj } = useQuery(
-    ['GetRoles'],
-    ({ signal }) => {
-      if (!apiKey && !serverSideApiKeyIsSet) return null;
+  try{
+	  const { data:roleData, error:errorObj, refetch:refetchObj } = useQuery(
+	    ['GetRoles'],
+	    ({ signal }) => {
+	      if (!apiKey && !serverSideApiKeyIsSet) return null;
+	  
+	      return getRoles(
+	        {
+	          key: apiKey,
+	        },
+	      );
+	    },
+	    { enabled: true, refetchOnMount: false },
+	  );
+	  useEffect(() => {
+	    if (roleData) dispatch({ field: 'roles', value: roleData });
+	  }, [roleData, dispatch]);
+  }catch(e){
+	  console.log(e)
+  };
   
-      return getRoles(
-        {
-          key: apiKey,
-        },
-      );
-    },
-    { enabled: true, refetchOnMount: false },
-  );
   
-  useEffect(() => {
-    if (roleData) dispatch({ field: 'roles', value: roleData });
-  }, [roleData, dispatch]);
 
   useEffect(() => {
     if (data) dispatch({ field: 'models', value: data });
