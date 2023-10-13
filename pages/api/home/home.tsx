@@ -78,45 +78,61 @@ const Home = ({
 
   const stopConversationRef = useRef<boolean>(false);
 
-  const { data, error, refetch } = useQuery(
-    ['GetModels', apiKey, serverSideApiKeyIsSet],
-    ({ signal }) => {
-      if (!apiKey && !serverSideApiKeyIsSet) return null;
-
-      return getModels(
-        {
-          key: apiKey,
-        },
-        signal,
-      );
-    },
-    { enabled: true, refetchOnMount: false },
-  );
-  
-  const { data:roleData, error:errorObj, refetch:refetchObj } = useQuery(
-    ['GetRoles'],
-    ({ signal }) => {
-      return getRoles(
-        {
-          key: apiKey,
-        },
-        signal,
-      );
-    },
-    { enabled: true, refetchOnMount: false },
-  );
   
   useEffect(() => {
-    if (roleData) dispatch({ field: 'roles', value: roleData });
-  }, [roleData, dispatch]);
-
-  useEffect(() => {
-    if (data) dispatch({ field: 'models', value: data });
-  }, [data, dispatch]);
-
-  useEffect(() => {
-    dispatch({ field: 'modelError', value: getModelsError(error) });
-  }, [dispatch, error, getModelsError]);
+    // 异步获取数据的逻辑
+    const fetchData = async () => {
+      try {
+		  const { data, error, refetch } = useQuery(
+		    ['GetModels', apiKey, serverSideApiKeyIsSet],
+		    ({ signal }) => {
+		      if (!apiKey && !serverSideApiKeyIsSet) return null;
+		  
+		      return getModels(
+		        {
+		          key: apiKey,
+		        },
+		        signal,
+		      );
+		    },
+		    { enabled: true, refetchOnMount: false },
+		  );
+		  
+  		const { data:roleData, error:errorObj, refetch:refetchObj } = useQuery(
+  		  ['GetRoles'],
+  		  ({ signal }) => {
+  		    return getRoles(
+  		      {
+  		        key: apiKey,
+  		      },
+  		      signal,
+  		    );
+  		  },
+  		  { enabled: true, refetchOnMount: false },
+  		);
+		
+		
+		useEffect(() => {
+		  if (roleData) dispatch({ field: 'roles', value: roleData });
+		}, [roleData, dispatch]);
+		
+		useEffect(() => {
+		  if (data) dispatch({ field: 'models', value: data });
+		}, [data, dispatch]);
+		
+		useEffect(() => {
+		  dispatch({ field: 'modelError', value: getModelsError(error) });
+		}, [dispatch, error, getModelsError]);
+      } catch (error) {
+        console.error('Failed to fetch dropdown data:', error);
+      }
+    };
+  
+    fetchData();
+  }, []);
+  
+  
+  
 
   // FETCH MODELS ----------------------------------------------
 
