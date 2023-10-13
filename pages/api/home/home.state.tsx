@@ -39,6 +39,7 @@ export const initialState: HomeInitialState = {
   messageIsStreaming: false,
   modelError: null,
   models: [],
+  roles: [],
   folders: [],
   conversations: [],
   selectedConversation: undefined,
@@ -51,6 +52,7 @@ export const initialState: HomeInitialState = {
   messageError: false,
   searchTerm: '',
   defaultModelId: undefined,
+  defaultRoleId:undefined,
   serverSideApiKeyIsSet: false,
   serverSidePluginKeysSet: false,
 };
