@@ -12,6 +12,7 @@ export interface OpenAIRole {
   role: string;
   tag: string; 
   content: string;
+  user:string;
 }
 
 export enum OpenAIRoleID {

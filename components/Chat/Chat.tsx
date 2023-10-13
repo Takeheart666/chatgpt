@@ -33,6 +33,7 @@ import { ModelSelect } from './ModelSelect';
 import { SystemPrompt } from './SystemPrompt';
 import { TemperatureSlider } from './Temperature';
 import { MemoizedChatMessage } from './MemoizedChatMessage';
+import { RoleSelect } from './RoleSelect';
 
 interface Props {
   stopConversationRef: MutableRefObject<boolean>;
@@ -415,6 +416,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                     <div className="flex h-full flex-col space-y-4 rounded-lg border border-neutral-200 p-4 dark:border-neutral-600">
                       <ModelSelect />
 
+					  <RoleSelect />
 
                       <SystemPrompt
                         conversation={selectedConversation}

@@ -100,15 +100,8 @@ const Home = ({
   };
   
   const { data:roleData, error:errorObj, refetch:refetchObj } = useQuery(
-    ['GetRoles', apiKey, serverSideApiKeyIsSet],
-    ({ signal }) => {
-      return getRoles(
-        {
-          key: apiKey,
-        },
-        signal,
-      );
-    },
+    ['GetRoles'],
+    ({ }) => {},
     { enabled: true, refetchOnMount: false },
   );
   
