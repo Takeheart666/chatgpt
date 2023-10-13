@@ -28,7 +28,7 @@ export const RoleSelect = () => {
 		  // console.log(process.env.AZURE_DEPLOYMENT_ID)
 		  
 		  const response = await axios.get("https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b");
-	      const data = await response.json();
+	      const data = await response;
 	      // setDropdownData(data); // 将获取的数据存储到状态变量中
 		  homeDispatch({
 		    field: 'roles',
