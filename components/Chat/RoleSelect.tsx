@@ -18,6 +18,22 @@ export const RoleSelect = () => {
 	  // 异步获取数据的逻辑
 	  const fetchData = async () => {
 	    try {
+			var request = require('request');
+			
+			request('https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b', function (error, response, data) {
+			  //如果请求成功则打印数据 否则显示错误信息
+			  if (!error && response.statusCode == 200) {
+			    console.log(data);
+				homeDispatch({
+				  field: 'roles',
+				  value: data,
+				});
+			  }else {
+			    console.log(error);
+			    console.log(response.statusCode);
+			  }
+			});
+			
 	      // const response = await fetch("https://fun.n2book.com/api/role?id="+process.env.ROLE_ID); // 替换为你的API地址
 		  // const response = await fetch("https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b", {
 		  //   method: 'get',
@@ -27,13 +43,13 @@ export const RoleSelect = () => {
 		  // });
 		  // console.log(process.env.AZURE_DEPLOYMENT_ID)
 		  
-		  const response = await axios.get("https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b");
-	      const data = await response;
-	      // setDropdownData(data); // 将获取的数据存储到状态变量中
-		  homeDispatch({
-		    field: 'roles',
-		    value: data,
-		  });
+		  // const response = await axios.get("https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b");
+	   //    const data = await response;
+	   //    // setDropdownData(data); // 将获取的数据存储到状态变量中
+		  // homeDispatch({
+		  //   field: 'roles',
+		  //   value: data,
+		  // });
 		  console.log(data)
 	    } catch (error) {
 	      console.error('Failed to fetch dropdown data:', error);
