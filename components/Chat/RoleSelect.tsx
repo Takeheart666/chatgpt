@@ -10,23 +10,11 @@ import HomeContext from '@/pages/api/home/home.context';
 
 import { ROLE_ID, AZURE_DEPLOYMENT_ID } from '@/utils/app/const';
 import n2bookApiService from '@/services/n2bookApiService';
-import { useCreateReducer } from '@/hooks/useCreateReducer';
-import { HomeInitialState, initialState } from '@/pages/api/home/home.state';
 
 export const RoleSelect = () => {
 	const [dropdownData, setDropdownData] = useState([]);
 	
 	const { getRoles } = n2bookApiService();
-	
-	const contextValue = useCreateReducer<HomeInitialState>({
-	  initialState,
-	});
-	const {
-	  state: {
-	    apiKey,
-	  },
-	  dispatch,
-	} = contextValue;
 	
 	useEffect(() => {
 	  // 异步获取数据的逻辑
@@ -37,17 +25,14 @@ export const RoleSelect = () => {
 			  ({ signal }) => {
 			    return getRoles(
 			      {
-			        key: '123',
+			        key: '12',
 			      },
 			      signal,
 			    );
 			  },
 			  { enabled: true, refetchOnMount: false },
 			);
-			
-			useEffect(() => {
-			  if (roleData) dispatch({ field: 'roles', value: roleData });
-			}, [roleData, dispatch]);
+			({ field: 'roles', value: roleData });
 			console.log(roles)
 	    } catch (error) {
 	      console.error('Failed to fetch dropdown data:', error);
@@ -82,26 +67,7 @@ export const RoleSelect = () => {
       <label className="mb-2 text-left text-neutral-700 dark:text-neutral-400">
         {t('Role')}
       </label>
-      <div className="w-full rounded-lg border border-neutral-200 bg-transparent pr-2 text-neutral-900 dark:border-neutral-600 dark:text-white">
-        <select
-          className="w-full bg-transparent p-2"
-          placeholder={t('Select a role') || ''}
-          value={selectedConversation?.model?.id || defaultRoleId}
-          onChange={handleChange}
-        >
-          {roles.map((role) => (
-            <option
-              key={role.id}
-              value={role.id}
-              className="dark:bg-[#343541] dark:text-white"
-            >
-              {role.id === defaultRoleId
-                ? `Default (${role.role})`
-                : role.role}
-            </option>
-          ))}
-        </select>
-      </div>
+      
       <div className="w-full mt-3 text-left text-neutral-700 dark:text-neutral-400 flex items-center">
         <a
           href="https://platform.openai.com/account/usage"
