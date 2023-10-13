@@ -36,7 +36,7 @@ import { Chat } from '@/components/Chat/Chat';
 import { Chatbar } from '@/components/Chatbar/Chatbar';
 import { Navbar } from '@/components/Mobile/Navbar';
 import Promptbar from '@/components/Promptbar';
-
+import axios from 'axios';
 import HomeContext from './home.context';
 import { HomeInitialState, initialState } from './home.state';
 
@@ -94,21 +94,35 @@ const Home = ({
   );
   
   
-  const { data:roleData, error:errorObj, refetch:refetchObj } = useQuery(
-    ['GetRoles'],
-    ({ signal }) => {
-      return getRoles(
-        {
-          key: apiKey,
-        },
-        signal,
-      );
-    },
-    { enabled: true, refetchOnMount: false },
-  );
-  useEffect(() => {
-    if (roleData) dispatch({ field: 'roles', value: roleData });
-  }, [roleData, dispatch]);
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b');  // 发起 GET 请求
+      console.log(response.data);  // 打印响应数据
+	  console.log(response.data.data)
+	  
+	  useEffect(() => {
+	    if (response) dispatch({ field: 'roles', value: response.data.data })
+	  	if (response) console.log(response.data);
+	  }, [response.data, dispatch]);
+    } catch (error) {
+      console.error(error);  // 打印错误信息
+    }
+  };
+  
+  fetchData();
+  // const { data:roleData, error:errorObj, refetch:refetchObj } = useQuaery(
+  //   ['GetRoles'],
+  //   ({ signal }) => {
+  //     return getRoles(
+  //       {
+  //         key: apiKey,
+  //       },
+  //       signal,
+  //     );
+  //   },
+  //   { enabled: true, refetchOnMount: false },
+  // ); 	
+  
 
   useEffect(() => {
     if (data) dispatch({ field: 'models', value: data });

@@ -11,6 +11,7 @@ import { ROLE_ID, AZURE_DEPLOYMENT_ID } from '@/utils/app/const';
 
 
 export const RoleSelect = () => {
+	let rdata ={}
 	const [dropdownData, setDropdownData] = useState([]);
 	
   const { t } = useTranslation('chat');
@@ -34,7 +35,9 @@ export const RoleSelect = () => {
       });
   };
 			console.log(roles)
-
+	
+	
+			
   return (
     <div className="flex flex-col">
       <label className="mb-2 text-left text-neutral-700 dark:text-neutral-400">
