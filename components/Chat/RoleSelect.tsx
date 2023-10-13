@@ -11,7 +11,6 @@ import { ROLE_ID, AZURE_DEPLOYMENT_ID } from '@/utils/app/const';
 
 
 export const RoleSelect = () => {
-	let rdata ={}
 	const [dropdownData, setDropdownData] = useState([]);
 	
   const { t } = useTranslation('chat');
@@ -30,7 +29,7 @@ export const RoleSelect = () => {
       handleUpdateConversation(selectedConversation, {
         key: 'role',
         value: roles.find(
-          (model) => model.data._id === e.target.value,
+          (model) => model._id === e.target.value,
         ) as OpenAIRole,
       });
   };
