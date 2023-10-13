@@ -93,6 +93,16 @@ const Home = ({
     { enabled: true, refetchOnMount: false },
   );
   
+  interface ApiResponse {
+    affectedDocs: number;
+    data: {
+      _id: string;
+      role: string;
+      tag: string;
+      content: string;
+      user: string;
+    };
+  }
   
   const { data:roleData, error:errorObj, refetch:refetchObj } = useQuery(
     ['GetRoles'],
@@ -106,9 +116,12 @@ const Home = ({
     },
     { enabled: true, refetchOnMount: false },
   ); 	
+  
+  let rData = roleData as ApiResponse;
+  
   useEffect(() => {
-    if (roleData) dispatch({ field: 'roles', value: roleData })
-	if (roleData) console.log(roleData)
+    if (roleData) dispatch({ field: 'roles', value: rData.data })
+	if (roleData) console.log(rData.data)
   }, [roleData, dispatch]);
 
   useEffect(() => {
