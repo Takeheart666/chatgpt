@@ -98,7 +98,7 @@ const Home = ({
     ({ signal }) => {
       return getRoles(
         {
-          key: apiKey,
+          
         },
         signal,
       );
@@ -107,7 +107,7 @@ const Home = ({
   );
   
   useEffect(() => {
-    if (roleData) dispatch({ field: 'roles', value: roleData });
+    if (roleData) dispatch({ field: 'roles', value: roleData.data });
   }, [roleData, dispatch]);
 
   useEffect(() => {
