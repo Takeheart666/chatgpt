@@ -45,8 +45,7 @@ export const RoleSelect = () => {
         ) as OpenAIRole,
       });
   };
-  
-  	console.log(roles)
+			console.log(roles)
 
   return (
     <div className="flex flex-col">
