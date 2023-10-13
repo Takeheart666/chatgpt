@@ -52,8 +52,8 @@ export const RoleSelect = () => {
         >
           
 		  {roles.map((role) => (
-		    <option key={role.data._id} value={role.data.role}>
-		        {role.data.tag}
+		    <option key={role._id} value={role.role}>
+		        {role.tag}
 		      </option>
 		    ))}
         </select>
