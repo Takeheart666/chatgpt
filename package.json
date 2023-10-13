@@ -14,7 +14,6 @@
   "dependencies": {
     "@dqbd/tiktoken": "^1.0.2",
     "@tabler/icons-react": "^2.9.0",
-    "axios": "^1.5.1",
     "eventsource-parser": "^0.1.0",
     "i18next": "^22.4.13",
     "next": "13.2.4",
@@ -30,7 +29,6 @@
     "rehype-mathjax": "^4.0.2",
     "remark-gfm": "^3.0.1",
     "remark-math": "^5.1.1",
-    "request": "^2.88.2",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
