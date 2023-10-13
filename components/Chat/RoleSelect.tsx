@@ -1,5 +1,6 @@
 import { IconExternalLink } from '@tabler/icons-react';
 import { useContext ,useEffect ,useState} from 'react';
+import { useQuery } from 'react-query';
 
 import { useTranslation } from 'next-i18next';
 
@@ -8,14 +9,45 @@ import { OpenAIModel,OpenAIRole } from '@/types/openai';
 import HomeContext from '@/pages/api/home/home.context';
 
 import { ROLE_ID, AZURE_DEPLOYMENT_ID } from '@/utils/app/const';
+import n2bookApiService from '@/services/n2bookApiService';
+import { useCreateReducer } from '@/hooks/useCreateReducer';
+import { HomeInitialState, initialState } from '@/pages/api/home/home.state';
 
 export const RoleSelect = () => {
 	const [dropdownData, setDropdownData] = useState([]);
+	
+	const { getRoles } = n2bookApiService();
+	
+	const contextValue = useCreateReducer<HomeInitialState>({
+	  initialState,
+	});
+	const {
+	  state: {
+	    apiKey,
+	  },
+	  dispatch,
+	} = contextValue;
 	
 	useEffect(() => {
 	  // 异步获取数据的逻辑
 	  const fetchData = async () => {
 	    try {
+			const { data:roleData, error:errorObj, refetch:refetchObj } = useQuery(
+			  ['GetRoles'],
+			  ({ signal }) => {
+			    return getRoles(
+			      {
+			        key: '123',
+			      },
+			      signal,
+			    );
+			  },
+			  { enabled: true, refetchOnMount: false },
+			);
+			
+			useEffect(() => {
+			  if (roleData) dispatch({ field: 'roles', value: roleData });
+			}, [roleData, dispatch]);
 			console.log(roles)
 	    } catch (error) {
 	      console.error('Failed to fetch dropdown data:', error);
