@@ -13,19 +13,6 @@ import { ROLE_ID, AZURE_DEPLOYMENT_ID } from '@/utils/app/const';
 export const RoleSelect = () => {
 	const [dropdownData, setDropdownData] = useState([]);
 	
-	useEffect(() => {
-	  // 异步获取数据的逻辑
-	  const fetchData = async () => {
-	    try {
-			console.log(roles)
-	    } catch (error) {
-	      console.error('Failed to fetch dropdown data:', error);
-	    }
-	  };
-	
-	  fetchData();
-	}, []);
-	
   const { t } = useTranslation('chat');
 
   const {
@@ -34,6 +21,7 @@ export const RoleSelect = () => {
     dispatch: homeDispatch,
   } = useContext(HomeContext);
   
+  console.log(roles)
   
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

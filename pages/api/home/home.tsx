@@ -97,9 +97,6 @@ const Home = ({
   const { data:roleData, error:errorObj, refetch:refetchObj } = useQuery(
     ['GetRoles'],
     ({ signal }) => {
-		useEffect(() => {
-		  if (roleData) dispatch({ field: 'roles', value: roleData });
-		}, [roleData, dispatch]);
       return getRoles(
         {
           key: apiKey,
@@ -110,6 +107,9 @@ const Home = ({
     { enabled: true, refetchOnMount: false },
   );
   
+  useEffect(() => {
+    if (roleData) dispatch({ field: 'roles', value: roleData });
+  }, [roleData, dispatch]);
 
   useEffect(() => {
     if (data) dispatch({ field: 'models', value: data });
