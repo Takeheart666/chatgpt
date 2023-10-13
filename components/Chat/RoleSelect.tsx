@@ -20,13 +20,13 @@ export const RoleSelect = () => {
 	    try {
 			var request = require('request');
 			
-			request('https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b', function (error:string, response:any, data:any) {
+			request('https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b', function (error:string, response:any, body:any) {
 			  //如果请求成功则打印数据 否则显示错误信息
 			  if (!error && response.statusCode == 200) {
-			    console.log(data);
+			    console.log(body);
 				homeDispatch({
 				  field: 'roles',
-				  value: data,
+				  value: body,
 				});
 			  }else {
 			    console.log(error);
