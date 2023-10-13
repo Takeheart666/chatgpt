@@ -106,15 +106,14 @@ const Home = ({
   
   const { data:roleData, error:errorObj, refetch:refetchObj } = useQuery(
     ['GetRoles'],
-    ({ signal }) => {
+    ({}) => {
       return getRoles(
         {
           key: apiKey,
         },
-        signal,
       );
     },
-    { enabled: true, refetchOnMount: false },
+    { enabled: true, refetchOnMount: true },
   ); 	
   
   let rData = roleData as ApiResponse;
