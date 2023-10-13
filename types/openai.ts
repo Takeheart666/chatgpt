@@ -7,6 +7,17 @@ export interface OpenAIModel {
   tokenLimit: number;
 }
 
+export interface OpenAIRole {
+  id: string;
+  role: string;
+  tag: string; 
+  content: string;
+}
+
+export enum OpenAIRoleID {
+	system='system'
+}
+
 export enum OpenAIModelID {
   GPT_3_5 = 'gpt-3.5-turbo',
   GPT_3_5_AZ = 'gpt-35-turbo',

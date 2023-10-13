@@ -30,7 +30,6 @@ import { ChatInput } from './ChatInput';
 import { ChatLoader } from './ChatLoader';
 import { ErrorMessageDiv } from './ErrorMessageDiv';
 import { ModelSelect } from './ModelSelect';
-import { RoleSelect } from './RoleSelect';
 import { SystemPrompt } from './SystemPrompt';
 import { TemperatureSlider } from './Temperature';
 import { MemoizedChatMessage } from './MemoizedChatMessage';
@@ -47,7 +46,6 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
       selectedConversation,
       conversations,
       models,
-	  roles,
       apiKey,
       pluginKeys,
       serverSideApiKeyIsSet,
@@ -407,35 +405,21 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                         <Spinner size="16px" className="mx-auto" />
                       </div>
                     ) : (
-                      '麻香嘴AI12312312312123'
+                      '麻香嘴AI'
                     )}
                   </div>
 
                   {models.length > 0 && (
                     <div className="flex h-full flex-col space-y-4 rounded-lg border border-neutral-200 p-4 dark:border-neutral-600">
                       <ModelSelect />
-					  
-					  <RoleSelect />
 
                       <SystemPrompt
                         conversation={selectedConversation}
                         prompts={prompts}
-                        onChangePrompt={(prompt) =>
-                          handleUpdateConversation(selectedConversation, {
-                            key: 'prompt',
-                            value: prompt,
-                          })
-                        }
                       />
 
                       <TemperatureSlider
                         label={t('Temperature')}
-                        onChangeTemperature={(temperature) =>
-                          handleUpdateConversation(selectedConversation, {
-                            key: 'temperature',
-                            value: temperature,
-                          })
-                        }
                       />
                     </div>
                   )}
@@ -472,14 +456,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                     key={index}
                     message={message}
                     messageIndex={index}
-                    onEdit={(editedMessage) => {
-                      setCurrentMessage(editedMessage);
-                      // discard edited message and the ones that come after then resend
-                      handleSend(
-                        editedMessage,
-                        selectedConversation?.messages.length - index,
-                      );
-                    }}
+                    
                   />
                 ))}
 
@@ -496,10 +473,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
           <ChatInput
             stopConversationRef={stopConversationRef}
             textareaRef={textareaRef}
-            onSend={(message, plugin) => {
-              setCurrentMessage(message);
-              handleSend(message, 0, plugin);
-            }}
+            
             onScrollDownClick={handleScrollDown}
             onRegenerate={() => {
               if (currentMessage) {

@@ -1,7 +1,7 @@
 import { Conversation, Message } from '@/types/chat';
 import { ErrorMessage } from '@/types/error';
 import { FolderInterface } from '@/types/folder';
-import { OpenAIModel, OpenAIModelID } from '@/types/openai';
+import { OpenAIModel, OpenAIModelID, OpenAIRole,OpenAIRoleID } from '@/types/openai';
 import { PluginKey } from '@/types/plugin';
 import { Prompt } from '@/types/prompt';
 
@@ -13,6 +13,7 @@ export interface HomeInitialState {
   messageIsStreaming: boolean;
   modelError: ErrorMessage | null;
   models: OpenAIModel[];
+  roles: OpenAIRole[];
   folders: FolderInterface[];
   conversations: Conversation[];
   selectedConversation: Conversation | undefined;
@@ -25,6 +26,7 @@ export interface HomeInitialState {
   messageError: boolean;
   searchTerm: string;
   defaultModelId: OpenAIModelID | undefined;
+  defaultRoleId: OpenAIRoleID | undefined;
   serverSideApiKeyIsSet: boolean;
   serverSidePluginKeysSet: boolean;
 }
