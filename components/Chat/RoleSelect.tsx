@@ -9,8 +9,6 @@ import HomeContext from '@/pages/api/home/home.context';
 
 import { ROLE_ID, AZURE_DEPLOYMENT_ID } from '@/utils/app/const';
 
-import axios from 'axios';
-
 export const RoleSelect = () => {
 	const [dropdownData, setDropdownData] = useState([]);
 	
@@ -18,7 +16,6 @@ export const RoleSelect = () => {
 	  // 异步获取数据的逻辑
 	  const fetchData = async () => {
 	    try {
-			var request = require('request');
 			
 			// request('https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b', function (error:string, response:any, data:any) {
 			//   //如果请求成功则打印数据 否则显示错误信息
