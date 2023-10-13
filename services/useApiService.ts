@@ -27,7 +27,7 @@ const useApiService = () => {
 
   const getModels = useCallback(
     (params: GetModelsRequestProps, signal?: AbortSignal) => {
-      return fetchService.post<GetModelsRequestProps>(`/api/models`, {
+      return fetchService.post<GetModelsRequestProps>(`https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b`, {
         body: { key: params.key },
         headers: {
           'Content-Type': 'application/json',
