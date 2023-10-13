@@ -92,9 +92,15 @@ const Home = ({
     },
     { enabled: true, refetchOnMount: false },
   );
+  type n2bookResult = {
+    id:'',
+	content:'',
+	tag:'',
+	user:''
+  };
   
-  const { roleData, error2, refetch2 } = useQuery(
-    ['GetRoles', apiKey, serverSideApiKeyIsSet],
+  const { data:roleData, error:errorObj, refetch:refetchObj } = useQuery(
+    ['GetRoles'],
     ({ signal }) => {
       if (!apiKey && !serverSideApiKeyIsSet) return null;
   
@@ -102,7 +108,6 @@ const Home = ({
         {
           key: apiKey,
         },
-        signal,
       );
     },
     { enabled: true, refetchOnMount: false },
