@@ -118,7 +118,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
           });
         }
         const controller = new AbortController();
-        const response = await fetch('https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b', {
+        const response = await fetch(endpoint, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -127,14 +127,6 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
           body,
         });
 		
-		// const test = await fetch('https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b', {
-		//   method: 'GET',
-		//   headers: {
-		//     'Content-Type': 'application/json',
-		//   },
-		//   signal: controller.signal,
-		//   body,
-		// });
         if (!response.ok) {
           homeDispatch({ field: 'loading', value: false });
           homeDispatch({ field: 'messageIsStreaming', value: false });

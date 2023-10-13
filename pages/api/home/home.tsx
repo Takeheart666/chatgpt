@@ -77,17 +77,17 @@ const Home = ({
   const stopConversationRef = useRef<boolean>(false);
 
   const { data, error, refetch } = useQuery(
-    ['GetModels', apiKey, serverSideApiKeyIsSet],
-    ({ signal }) => {
-      if (!apiKey && !serverSideApiKeyIsSet) return null;
+    // ['GetModels', apiKey, serverSideApiKeyIsSet],
+    // ({ signal }) => {
+    //   if (!apiKey && !serverSideApiKeyIsSet) return null;
 
-      return getModels(
-        {
-          key: apiKey,
-        },
-        signal,
-      );
-    },
+    //   return getModels(
+    //     {
+    //       key: apiKey,
+    //     },
+    //     signal,
+    //   );
+    // },
     { enabled: true, refetchOnMount: false },
   );
 
