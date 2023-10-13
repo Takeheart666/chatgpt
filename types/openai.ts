@@ -8,11 +8,16 @@ export interface OpenAIModel {
 }
 
 export interface OpenAIRole {
-  id: string;
-  role: string;
-  tag: string; 
-  content: string;
-  user:string;
+    affectedDocs: string,
+	data:[{
+		_id: string;
+		role: string;
+		tag: string; 
+		content: string;
+		user:string;
+	}]
+
+  
 }
 
 export enum OpenAIRoleID {

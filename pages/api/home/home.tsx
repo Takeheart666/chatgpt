@@ -106,9 +106,8 @@ const Home = ({
     },
     { enabled: true, refetchOnMount: false },
   );
-  let rdata = roleData.data
   useEffect(() => {
-    if (roleData) dispatch({ field: 'roles', value: rdata });
+    if (roleData) dispatch({ field: 'roles', value: roleData });
   }, [roleData, dispatch]);
 
   useEffect(() => {
