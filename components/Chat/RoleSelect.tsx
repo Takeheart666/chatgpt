@@ -29,7 +29,7 @@ export const RoleSelect = () => {
       handleUpdateConversation(selectedConversation, {
         key: 'role',
         value: roles.find(
-          (model) => model.id === e.target.value,
+          (model) => model.data._id === e.target.value,
         ) as OpenAIRole,
       });
   };
@@ -49,8 +49,8 @@ export const RoleSelect = () => {
         >
           
 		  {roles.map((role) => (
-		    <option key={role.id} value={role.role}>
-		        {role.tag}
+		    <option key={role.data._id} value={role.data.role}>
+		        {role.data.tag}
 		      </option>
 		    ))}
         </select>

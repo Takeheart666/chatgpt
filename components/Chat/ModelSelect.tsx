@@ -38,11 +38,17 @@ export const ModelSelect = () => {
           value={selectedConversation?.model?.id || defaultModelId}
           onChange={handleChange}
         >
-          {roles.map((role) => (
-            <option key={role._id} value={role.role}>
-                {role.tag}
-              </option>
-            ))}
+          {models.map((model) => (
+            <option
+              key={model.id}
+              value={model.id}
+              className="dark:bg-[#343541] dark:text-white"
+            >
+              {model.id === defaultModelId
+                ? `Default (${model.name})`
+                : model.name}
+            </option>
+          ))}
         </select>
       </div>
       <div className="w-full mt-3 text-left text-neutral-700 dark:text-neutral-400 flex items-center">
