@@ -10,6 +10,7 @@ import { useCreateReducer } from '@/hooks/useCreateReducer';
 
 import useErrorService from '@/services/errorService';
 import useApiService from '@/services/useApiService';
+import n2bookApiService from '@/services/n2bookApiService';
 
 import {
   cleanConversationHistory,
@@ -54,6 +55,7 @@ const Home = ({
 }: Props) => {
   const { t } = useTranslation('chat');
   const { getModels } = useApiService();
+  const { getRoles } = n2bookApiService();
   const { getModelsError } = useErrorService();
   const [initialRender, setInitialRender] = useState<boolean>(true);
 
@@ -90,6 +92,25 @@ const Home = ({
     },
     { enabled: true, refetchOnMount: false },
   );
+  
+  const { roleData, error2, refetch2 } = useQuery(
+    ['GetRoles', apiKey, serverSideApiKeyIsSet],
+    ({ signal }) => {
+      if (!apiKey && !serverSideApiKeyIsSet) return null;
+  
+      return getRoles(
+        {
+          key: apiKey,
+        },
+        signal,
+      );
+    },
+    { enabled: true, refetchOnMount: false },
+  );
+  
+  useEffect(() => {
+    if (roleData) dispatch({ field: 'roles', value: roleData });
+  }, [roleData, dispatch]);
 
   useEffect(() => {
     if (data) dispatch({ field: 'models', value: data });

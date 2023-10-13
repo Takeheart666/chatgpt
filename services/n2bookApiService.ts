@@ -2,11 +2,11 @@ import { useCallback } from 'react';
 
 import { useFetch } from '@/hooks/useFetch';
 
-export interface GetModelsRequestProps {
+export interface GetRolesRequestProps {
   key: string;
 }
 
-const useApiService = () => {
+const n2bookApiService = () => {
   const fetchService = useFetch();
 
   // const getModels = useCallback(
@@ -25,9 +25,9 @@ const useApiService = () => {
   // 	[fetchService]
   // );
 
-  const getModels = useCallback(
-    (params: GetModelsRequestProps, signal?: AbortSignal) => {
-      return fetchService.post<GetModelsRequestProps>(`/api/models`, {
+  const getRoles = useCallback(
+    (params: GetRolesRequestProps, signal?: AbortSignal) => {
+      return fetchService.post<GetRolesRequestProps>(`https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b`, {
         body: { key: params.key },
         headers: {
           'Content-Type': 'application/json',
@@ -39,8 +39,8 @@ const useApiService = () => {
   );
 
   return {
-    getModels,
+    getRoles,
   };
 };
 
-export default useApiService;
+export default n2bookApiService;
