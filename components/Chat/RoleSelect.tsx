@@ -9,6 +9,8 @@ import HomeContext from '@/pages/api/home/home.context';
 
 import { ROLE_ID, AZURE_DEPLOYMENT_ID } from '@/utils/app/const';
 
+import axios from 'axios';
+
 export const RoleSelect = () => {
 	const [dropdownData, setDropdownData] = useState([]);
 	
@@ -17,13 +19,15 @@ export const RoleSelect = () => {
 	  const fetchData = async () => {
 	    try {
 	      // const response = await fetch("https://fun.n2book.com/api/role?id="+process.env.ROLE_ID); // 替换为你的API地址
-		  const response = await fetch("https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b", {
-		    method: 'get',
-		    headers: {
-		      'Content-Type': 'application/json',
-		    },
-		  });
-		  console.log(process.env.AZURE_DEPLOYMENT_ID)
+		  // const response = await fetch("https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b", {
+		  //   method: 'get',
+		  //   headers: {
+		  //     'Content-Type': 'application/json',
+		  //   },
+		  // });
+		  // console.log(process.env.AZURE_DEPLOYMENT_ID)
+		  
+		  const response = await axios.get("https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b");
 	      const data = await response.json();
 	      // setDropdownData(data); // 将获取的数据存储到状态变量中
 		  homeDispatch({
