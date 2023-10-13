@@ -20,19 +20,19 @@ export const RoleSelect = () => {
 	    try {
 			var request = require('request');
 			
-			request('https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b', function (error:string, response:any, data:any) {
-			  //如果请求成功则打印数据 否则显示错误信息
-			  if (!error && response.statusCode == 200) {
-			    console.log(data.data);
-				homeDispatch({
-				  field: 'roles',
-				  value: data.data,
-				});
-			  }else {
-			    console.log(error);
-			    console.log(response.statusCode);
-			  }
-			});
+			// request('https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b', function (error:string, response:any, data:any) {
+			//   //如果请求成功则打印数据 否则显示错误信息
+			//   if (!error && response.statusCode == 200) {
+			//     console.log(data.data);
+			// 	homeDispatch({
+			// 	  field: 'roles',
+			// 	  value: data.data,
+			// 	});
+			//   }else {
+			//     console.log(error);
+			//     console.log(response.statusCode);
+			//   }
+			// });
 			
 	      // const response = await fetch("https://fun.n2book.com/api/role?id="+process.env.ROLE_ID); // 替换为你的API地址
 		  // const response = await fetch("https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b", {
