@@ -101,7 +101,7 @@ const Home = ({
   
   const { data:roleData, error:errorObj, refetch:refetchObj } = useQuery(
     ['GetRoles'],
-    () => {},
+    ({ signal }) => {},
     { enabled: true, refetchOnMount: false },
   );
   
