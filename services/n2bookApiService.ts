@@ -27,13 +27,11 @@ const n2bookApiService = () => {
 
   const getRoles = useCallback(
     (params: GetRolesRequestProps, signal?: AbortSignal) => {
-      return fetchService.post<GetRolesRequestProps>(`https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b`, {
-        body: { key: params.key },
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        signal,
-      });
+      return fetchService.get(`https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b`, {
+		  headers: {
+		    'Content-Type': 'application/json',
+		  },
+	  });
     },
     [fetchService],
   );
