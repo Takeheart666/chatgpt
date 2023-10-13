@@ -92,16 +92,17 @@ const Home = ({
     },
     { enabled: true, refetchOnMount: false },
   );
-  type n2bookResult = {
-    id:'',
-	content:'',
-	tag:'',
-	user:''
-  };
   
   const { data:roleData, error:errorObj, refetch:refetchObj } = useQuery(
     ['GetRoles'],
-    ({ }) => {},
+    ({ signal }) => {
+      return getRoles(
+        {
+          key: apiKey,
+        },
+        signal,
+      );
+    },
     { enabled: true, refetchOnMount: false },
   );
   
