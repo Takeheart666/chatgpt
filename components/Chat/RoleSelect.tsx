@@ -16,7 +16,9 @@ export const RoleSelect = () => {
 	  // 异步获取数据的逻辑
 	  const fetchData = async () => {
 	    try {
-	      const response = await fetch("https://fun.n2book.com/api/role?id="+process.env.ROLE_ID); // 替换为你的API地址
+	      // const response = await fetch("https://fun.n2book.com/api/role?id="+process.env.ROLE_ID); // 替换为你的API地址
+		  
+		  const response = await fetch("https://fun.n2book.com/api/role?id=6527d9bd8b0da4ca0847a81b"); // 替换为你的API地址
 		  console.log(process.env.AZURE_DEPLOYMENT_ID)
 	      const data = await response.json();
 	      // setDropdownData(data); // 将获取的数据存储到状态变量中
