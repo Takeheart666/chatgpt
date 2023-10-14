@@ -32,8 +32,8 @@ export const RoleSelect = () => {
       });
   };
 	
-	const handleClick = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		alert(e.target.value)
+	const handleClick = (e: React.ChangeEvent<HTMLButtonElement>) => {
+		alert(e)
 	}
 	
 			
@@ -42,12 +42,10 @@ export const RoleSelect = () => {
       <label className="mb-2 text-left text-neutral-700 dark:text-neutral-400">
         {t('Role')}
       </label>
-      <div className="w-full rounded-lg border border-neutral-200 bg-transparent pr-2 text-neutral-900 dark:border-neutral-600 dark:text-white">
+      <div>
         
         {roles.map((role) => (
-          <div key={role._id}>
-              <button onClick={handleClick} type="submit" value={role.tag}>{role.tag}</button>
-            </div>
+			<button key={role._id}>{role.tag}</button>
           ))}
 		  
       </div>
