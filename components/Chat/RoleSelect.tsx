@@ -43,7 +43,7 @@ export const RoleSelect = () => {
       <div>
         
         {roles.map((role) => (
-			<button key={role._id}>{role.tag}</button>
+			<button key={role._id}>{role.tag} |</button>
           ))}
 		  
       </div>
