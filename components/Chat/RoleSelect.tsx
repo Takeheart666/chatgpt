@@ -46,9 +46,10 @@ export const RoleSelect = () => {
         
         {roles.map((role) => (
           <div key={role._id}>
-              <input type="submit" value={role.tag} />
+              <button type="submit" value={role.tag} />
             </div>
           ))}
+		  
       </div>
       <div className="w-full mt-3 text-left text-neutral-700 dark:text-neutral-400 flex items-center">
         <a
