@@ -32,9 +32,10 @@ export const RoleSelect = () => {
       });
   };
 	
-	const onAlert = () => {
-		alert(1)
-	}
+	const onAlert = (roleTag:any) => {
+	  // 在这里可以使用 roleTag 做你想要的操作
+	  alert(roleTag);
+	};
 	
 			
   return (
@@ -45,7 +46,7 @@ export const RoleSelect = () => {
         {roles.map((role) => (
 			<button key={role._id}
 			  className="ml-2 cursor-pointer hover:opacity-50 broder:1px solid"
-			  onClick={onAlert}
+			  onClick={() => onAlert(role.tag)}
 			>
 			  {role.tag}
 			</button>
