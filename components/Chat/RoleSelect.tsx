@@ -61,9 +61,7 @@ export const RoleSelect: FC<Props> = ({
 	
 	const onAlert = (roleContent:any) => {
 	  // 在这里可以使用 roleTag 做你想要的操作
-		useEffect(() => {
-			setValue(roleContent);
-		}, [conversation])
+		setValue(roleContent);
 	};
 	
 			
