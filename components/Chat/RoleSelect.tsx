@@ -69,7 +69,6 @@ export const RoleSelect: FC<Props> = ({
     <div className="flex flex-col">
       
       <div>
-        
         {roles.map((role) => (
 			<button key={role._id}
 			  className="ml-2 cursor-pointer hover:opacity-50 broder:1px solid"
@@ -80,8 +79,11 @@ export const RoleSelect: FC<Props> = ({
 			
 			
         ))}
-		  
       </div>
+	  
+	  
+	  
+	  
     </div>
   );
 };
