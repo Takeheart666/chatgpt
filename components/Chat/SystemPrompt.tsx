@@ -218,6 +218,26 @@ export const SystemPrompt: FC<Props> = ({
         onKeyDown={handleKeyDown}
       />
 
+      {showPromptList && filteredPrompts.length > 0 && (
+        <div>
+          <PromptList
+            activePromptIndex={activePromptIndex}
+            prompts={filteredPrompts}
+            onSelect={handleInitModal}
+            onMouseOver={setActivePromptIndex}
+            promptListRef={promptListRef}
+          />
+        </div>
+      )}
+
+      {isModalVisible && (
+        <VariableModal
+          prompt={prompts[activePromptIndex]}
+          variables={variables}
+          onSubmit={handleSubmit}
+          onClose={() => setIsModalVisible(false)}
+        />
+      )}
     </div>
   );
 };
