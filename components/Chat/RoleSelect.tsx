@@ -32,8 +32,8 @@ export const RoleSelect = () => {
       });
   };
 	
-	const handleClick = (e: React.ChangeEvent<HTMLButtonElement>) => {
-		alert(e)
+	const onAlert = () => {
+		alert(1)
 	}
 	
 			
@@ -43,8 +43,15 @@ export const RoleSelect = () => {
       <div>
         
         {roles.map((role) => (
-			<button key={role._id}>{role.tag} |</button>
-          ))}
+			<button key={role._id}
+			  className="ml-2 cursor-pointer hover:opacity-50"
+			  onClick={onAlert}
+			>
+			  {role.tag}
+			</button>
+			
+			
+        ))}
 		  
       </div>
     </div>
