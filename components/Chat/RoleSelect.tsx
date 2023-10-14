@@ -13,6 +13,8 @@ import { ROLE_ID, AZURE_DEPLOYMENT_ID } from '@/utils/app/const';
 export const RoleSelect = () => {
 	const [dropdownData, setDropdownData] = useState([]);
 	
+	let prompt
+	
   const { t } = useTranslation('chat');
 
   const {
@@ -32,19 +34,19 @@ export const RoleSelect = () => {
       });
   };
 	
-	const onAlert = (roleTag:any) => {
+	const onAlert = (roleContent:any) => {
 	  // 在这里可以使用 roleTag 做你想要的操作
-	  alert(roleTag);
+	  prompt = roleContent;
 	};
 	
 			
   return (
-    <div className="flex flex-col">
+    <div className="flex">
       
         {roles.map((role) => (
 			<button key={role._id}
 			  className="ml-2 cursor-pointer hover:opacity-50 broder:1px solid"
-			  onClick={() => onAlert(role.tag)}
+			  onClick={() => onAlert(role.content)}
 			>
 			  {role.tag}
 			</button>
@@ -65,6 +67,7 @@ export const RoleSelect = () => {
 		  placeholder={
 		    t(`Enter a prompt or type "/" to select a prompt...`) || ''
 		  }
+		  value={prompt}
 		/>
     </div>
   );
