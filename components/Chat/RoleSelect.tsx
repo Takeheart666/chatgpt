@@ -45,9 +45,7 @@ export const RoleSelect = () => {
       <div className="w-full rounded-lg border border-neutral-200 bg-transparent pr-2 text-neutral-900 dark:border-neutral-600 dark:text-white">
         
         {roles.map((role) => (
-          <div key={role._id}>
               <button type="submit" value={role.tag} />
-            </div>
           ))}
 		  
       </div>
