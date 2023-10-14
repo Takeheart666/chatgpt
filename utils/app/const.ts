@@ -1,4 +1,4 @@
-export const DEFAULT_SYSTEM_PROMPT =
+ let DEFAULT_SYSTEM_PROMPT =
 	process.env.NEXT_PUBLIC_DEFAULT_SYSTEM_PROMPT ||
 	"你现在是洪雅县和鑫农业科技发展有限公司的金牌销售，你需要运用你熟练的销售知识帮助大家更好的销售藤椒油、藤椒酱、藤椒花生等系列产品。";
 
