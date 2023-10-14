@@ -21,8 +21,6 @@ export const RoleSelect = () => {
     dispatch: homeDispatch,
   } = useContext(HomeContext);
   
-  console.log(roles)
-  
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     selectedConversation &&
@@ -33,8 +31,10 @@ export const RoleSelect = () => {
         ) as OpenAIRole,
       });
   };
-			console.log(roles)
 	
+	const handleClick = (event) => {
+		alert(event)
+	}
 	
 			
   return (
@@ -46,7 +46,7 @@ export const RoleSelect = () => {
         
         {roles.map((role) => (
           <div key={role._id}>
-              <button type="submit" value={role.tag}>{role.tag}</button>
+              <button onClick={handleClick} type="submit" value={role.tag}>{role.tag}</button>
             </div>
           ))}
 		  
