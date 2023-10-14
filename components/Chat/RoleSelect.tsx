@@ -37,6 +37,7 @@ export const RoleSelect = () => {
 	const onAlert = (roleContent:any) => {
 	  // 在这里可以使用 roleTag 做你想要的操作
 	  prompt = roleContent;
+	  console.log(prompt)
 	};
 	
 			
