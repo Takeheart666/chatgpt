@@ -32,8 +32,8 @@ export const RoleSelect = () => {
       });
   };
 	
-	const handleClick = (event) => {
-		alert(event)
+	const handleClick = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		alert(e.target.value)
 	}
 	
 			
