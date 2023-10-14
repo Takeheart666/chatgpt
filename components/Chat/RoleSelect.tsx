@@ -44,7 +44,7 @@ export const RoleSelect = () => {
         
         {roles.map((role) => (
 			<button key={role._id}
-			  className="ml-2 cursor-pointer hover:opacity-50"
+			  className="ml-2 cursor-pointer hover:opacity-50 broder:1px solid"
 			  onClick={onAlert}
 			>
 			  {role.tag}
