@@ -13,7 +13,7 @@ import { ROLE_ID, AZURE_DEPLOYMENT_ID } from '@/utils/app/const';
 export const RoleSelect = () => {
 	const [dropdownData, setDropdownData] = useState([]);
 	
-	let prompt
+	let prompt =123123123
 	
   const { t } = useTranslation('chat');
 
@@ -41,18 +41,20 @@ export const RoleSelect = () => {
 	
 			
   return (
-    <div className="flex">
+    <div className="flex flex-col">
       
-        {roles.map((role) => (
-			<button key={role._id}
-			  className="ml-2 cursor-pointer hover:opacity-50 broder:1px solid"
-			  onClick={() => onAlert(role.content)}
-			>
-			  {role.tag}
-			</button>
-			
-			
-        ))}
+        <div>
+			{roles.map((role) => (
+				<button key={role._id}
+				  className="ml-2 cursor-pointer hover:opacity-50 broder:1px solid"
+				  onClick={() => onAlert(role.content)}
+				>
+				  {role.tag}
+				</button>
+				
+				
+			))}
+		</div>
 		
 		
 		<label className="mb-2 text-left text-neutral-700 dark:text-neutral-400">
