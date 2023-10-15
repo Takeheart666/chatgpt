@@ -136,21 +136,6 @@ export const SystemPrompt: FC<Props> = ({
 
     setValue(newContent);
     onChangePrompt(newContent);
-	
-	
-	// 更新conversation.prompt的值
-	
-	const updatedConversation: Conversation = {
-	  ...conversation,
-	  prompt: newContent
-	};
-	
-	const updatedKeyValuePair: KeyValuePair = {
-	  key: 'prompt',
-	  value: newContent
-	};
-	
-	handleUpdateConversation(updatedConversation, updatedKeyValuePair);
 
     if (textareaRef && textareaRef.current) {
       textareaRef.current.focus();
@@ -196,8 +181,10 @@ export const SystemPrompt: FC<Props> = ({
   useEffect(() => {
     if (conversation.prompt) {
       setValue(conversation.prompt);
+	  console.log('conversation.prompt:'+conversation.prompt)
     } else {
       setValue(DEFAULT_SYSTEM_PROMPT);
+	  console.log('DEFAULT_SYSTEM_PROMPT')
     }
   }, [conversation]);
 
@@ -222,6 +209,7 @@ export const SystemPrompt: FC<Props> = ({
   const onAlert = (roleContent: string) => {
     // 更新状态变量的值
     setValue(roleContent);
+	onChangePrompt(roleContent);
   };
 
   return (
