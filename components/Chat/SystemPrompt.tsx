@@ -33,7 +33,6 @@ export const SystemPrompt: FC<Props> = ({
   onChangePrompt,
 }) => {
   const { t } = useTranslation('chat');
-  const [promptContext, setPrompt] = useState('');
   const [value, setValue] = useState<string>('');
   const [activePromptIndex, setActivePromptIndex] = useState(0);
   const [showPromptList, setShowPromptList] = useState(false);
@@ -203,7 +202,7 @@ export const SystemPrompt: FC<Props> = ({
   
   const onAlert = (roleContent: string) => {
     // 更新状态变量的值
-    setPrompt(roleContent);
+    setValue(roleContent);
   };
 
   return (
