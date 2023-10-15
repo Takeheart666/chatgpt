@@ -132,6 +132,12 @@ export const SystemPrompt: FC<Props> = ({
 
     setValue(newContent);
     onChangePrompt(newContent);
+	
+	// 更新conversation.prompt的值
+	  handleUpdateConversation({
+	    ...conversation,
+	    prompt: newContent
+	  });
 
     if (textareaRef && textareaRef.current) {
       textareaRef.current.focus();
