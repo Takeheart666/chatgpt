@@ -5,6 +5,7 @@ import {
   useEffect,
   useRef,
   useState,
+  useContext,
 } from 'react';
 
 import { useTranslation } from 'next-i18next';
@@ -29,7 +30,7 @@ export const SystemPrompt: FC<Props> = ({
   onChangePrompt,
 }) => {
   const { t } = useTranslation('chat');
-
+  const [promptContext, setPrompt] = useState('');
   const [value, setValue] = useState<string>('');
   const [activePromptIndex, setActivePromptIndex] = useState(0);
   const [showPromptList, setShowPromptList] = useState(false);
@@ -190,9 +191,28 @@ export const SystemPrompt: FC<Props> = ({
       window.removeEventListener('click', handleOutsideClick);
     };
   }, []);
+  
+  
+  const onAlert = (roleContent: string) => {
+    // 更新状态变量的值
+    setPrompt(roleContent);
+  };
 
   return (
     <div className="flex flex-col">
+	
+		<div>
+		  {roles.map((role) => (
+		    <button
+		      key={role._id}
+		      className="ml-2 cursor-pointer hover:opacity-50 broder:1px solid"
+		      onClick={() => onAlert(role.content)}
+		    >
+		      {role.tag}
+		    </button>
+		  ))}
+		</div>
+	
       <label className="mb-2 text-left text-neutral-700 dark:text-neutral-400">
         {t('System Prompt')}
       </label>
