@@ -15,7 +15,7 @@ export const RoleSelect = () => {
   const { t } = useTranslation('chat');
 
   const {
-    state: { selectedConversation, models,prompts, roles, defaultModelId, defaultRoleId },
+    state: { selectedConversation, models, roles, defaultModelId, defaultRoleId },
     handleUpdateConversation,
     dispatch: homeDispatch,
   } = useContext(HomeContext);

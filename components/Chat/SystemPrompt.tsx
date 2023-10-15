@@ -15,6 +15,9 @@ import { DEFAULT_SYSTEM_PROMPT } from '@/utils/app/const';
 import { Conversation } from '@/types/chat';
 import { Prompt } from '@/types/prompt';
 
+
+import HomeContext from '@/pages/api/home/home.context';
+
 import { PromptList } from './PromptList';
 import { VariableModal } from './VariableModal';
 
@@ -44,6 +47,11 @@ export const SystemPrompt: FC<Props> = ({
   const filteredPrompts = prompts.filter((prompt) =>
     prompt.name.toLowerCase().includes(promptInputValue.toLowerCase()),
   );
+  const {
+    state: { selectedConversation, models, roles, defaultModelId, defaultRoleId },
+    handleUpdateConversation,
+    dispatch: homeDispatch,
+  } = useContext(HomeContext);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;
