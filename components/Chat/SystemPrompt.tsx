@@ -17,9 +17,11 @@ import { Prompt } from '@/types/prompt';
 
 
 import HomeContext from '@/pages/api/home/home.context';
+import { KeyValuePair } from '@/types/data';
 
 import { PromptList } from './PromptList';
 import { VariableModal } from './VariableModal';
+
 
 interface Props {
   conversation: Conversation;
@@ -123,6 +125,8 @@ export const SystemPrompt: FC<Props> = ({
       updatePromptListVisibility(prompt.content);
     }
   };
+  
+  
 
   const handleSubmit = (updatedVariables: string[]) => {
     const newContent = value?.replace(/{{(.*?)}}/g, (match, variable) => {
@@ -133,11 +137,20 @@ export const SystemPrompt: FC<Props> = ({
     setValue(newContent);
     onChangePrompt(newContent);
 	
+	
 	// 更新conversation.prompt的值
-	  handleUpdateConversation({
-	    ...conversation,
-	    prompt: newContent
-	  });
+	
+	const updatedConversation: Conversation = {
+	  ...conversation,
+	  prompt: newContent
+	};
+	
+	const updatedKeyValuePair: KeyValuePair = {
+	  key: 'prompt',
+	  value: newContent
+	};
+	
+	handleUpdateConversation(updatedConversation, updatedKeyValuePair);
 
     if (textareaRef && textareaRef.current) {
       textareaRef.current.focus();
