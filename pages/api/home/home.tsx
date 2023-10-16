@@ -116,7 +116,11 @@ const Home = ({
     { enabled: false, refetchOnMount: false },
   ); 	
   
-  refetch();
+  useEffect(() => {
+    // 在适当的时机调用 refetch 方法
+    refetch();
+    refetchObj();
+  }, []);
   
   let rData = roleData as ApiResponse;
   
