@@ -113,8 +113,10 @@ const Home = ({
         },
       );
     },
-    { enabled: true, refetchOnMount: true },
+    { enabled: false, refetchOnMount: false },
   ); 	
+  
+  refetch();
   
   let rData = roleData as ApiResponse;
   
